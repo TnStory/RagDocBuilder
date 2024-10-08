@@ -1,8 +1,15 @@
-# 🎈 Blank app template
+# 🎈 RAG Doc Builder
 
-A simple Streamlit app template for you to modify!
+## RAG 구축
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+### input : URL(Web Page), URL(Linked File), FileUpload
+### fileType : PDF, Word, PPT, CSV, Text
+
+### 1] Pinecone for Vector DB
+### 2] Enbedding for OpenAI 
+### 3] Doc build history for AWS RDS Postgre 
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://verbose-enigma-q746v4wvqx4f9v7v-8501.app.github.dev/)
 
 ### How to run it on your own machine
 
