@@ -4,7 +4,8 @@ import pandas as pd
 
 st.title("🎈 RAG Doc Builder")
 st.write(
-    "RAG 구축을 위해 URL(WebPage 또는 Web File URL),  File(PDF, CSV, TEXT)을 입력."
+    "LangChain, Embedding(OpenAI), VectorDB(Pinecone), Other(Postgres)",
+    "RAG 구축을 위해 URL(WebPage),  File(PDF, TEXT)을 입력."
 )
 
 def call_api_1(url):
