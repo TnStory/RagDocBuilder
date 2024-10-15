@@ -4,7 +4,7 @@ import pandas as pd
 
 st.title("🎈 RAG Doc Builder")
 st.write(
-    "LangChain, Embedding(OpenAI), VectorDB(Pinecone), RDB(Postgres)",
+    "LangChain, Embedding(OpenAI), VectorDB(Pinecone), AWS RDB(Postgres)",
     "RAG 구축을 위해 URL(WebPage),  File(PDF, TEXT)을 입력."
 )
 
