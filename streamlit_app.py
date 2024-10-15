@@ -12,25 +12,23 @@ st.write(
     "https://github.com/TnStory/RagDocBuilder"
 )
 
-def call_api_1(url):
-    # 여기에 API-1 호출을 처리하는 로직을 구현합니다.
+def call_url_build(url):
     params = {'url': url}
-    response = requests.get("http://127.0.0.1:8080/api/rag/url_build", params=params)
+    response = requests.get("https://ragbuilderapi.streamlit.app/api/rag/url_build", params=params)
     if response.status_code == 200:
         return response.json()  # 응답을 JSON 형식으로 가정
     return {"error": "Failed to fetch data"}
 
-def call_api_2(file):
-    # 여기에 API-2 호출을 처리하는 로직을 구현합니다.
+def call_file_build(file):
     files = {'file': (file.name, file)}
-    response = requests.post("http://127.0.0.1:8080/api/rag/file_build", files=files)
+    response = requests.post("https://ragbuilderapi.streamlit.app/api/rag/file_build", files=files)
     if response.status_code == 200:
         return response.json()  # 응답을 JSON 형식으로 가정
     return {"error": "Failed to upload file"}
 
 def call_build_list(build_type=None, page=1, page_size=10):
     params = {'build_type': build_type, 'page': page, 'page_size': page_size}
-    response = requests.get("http://127.0.0.1:8080/api/rag/build_list", params=params)
+    response = requests.get("https://ragbuilderapi.streamlit.app/api/rag/build_list", params=params)
     if response.status_code == 200:
         return response.json()
     return {"error": "Failed to fetch build list"}
@@ -38,7 +36,7 @@ def call_build_list(build_type=None, page=1, page_size=10):
 def call_similarity_search(key_word):
     # 유사도 검색 API 호출 로직 구현
     json_data = {'key_word': key_word}
-    response = requests.post("http://127.0.0.1:8080/api/rag/similarity_search", json=json_data)
+    response = requests.post("https://ragbuilderapi.streamlit.app/api/rag/similarity_search", json=json_data)
     if response.status_code == 200:
         return response.json()  # 응답을 JSON 형식으로 가정
     return {"error": "Failed to perform similarity search"}
@@ -51,7 +49,7 @@ def main():
     url = st.text_input("RAG 구축을 위한 URL을 입력하세요. https://www.10000recipe.com/recipe/print.html?seq=6887226")
     if st.button("Build RAG by URL"):
         if url:
-            api_1_result = call_api_1(url)
+            api_1_result = call_url_build(url)
             st.write("결과:")
             st.json(api_1_result)
         else:
@@ -62,7 +60,7 @@ def main():
     uploaded_file = st.file_uploader("RAG 구축을 위한 PDF 파일을 업로드하세요 (최대 30MB):", type=["txt", "csv", "pdf"])
     if uploaded_file and uploaded_file.size <= 30 * 1024 * 1024:
         if st.button("Build RAG by File"):
-            api_2_result = call_api_2(uploaded_file)
+            api_2_result = call_file_build(uploaded_file)
             st.write("결과:")
             st.json(api_2_result)
     elif uploaded_file and uploaded_file.size > 30 * 1024 * 1024:
