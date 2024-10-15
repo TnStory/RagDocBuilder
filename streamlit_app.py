@@ -8,6 +8,10 @@ st.write(
     "RAG 구축을 위해 URL(WebPage),  File(PDF, TEXT)을 입력."
 )
 
+st.write(
+    "https://github.com/TnStory/RagDocBuilder"
+)
+
 def call_api_1(url):
     # 여기에 API-1 호출을 처리하는 로직을 구현합니다.
     params = {'url': url}
