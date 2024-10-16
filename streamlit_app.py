@@ -14,21 +14,21 @@ st.write(
 
 def call_url_build(url):
     params = {'url': url}
-    response = requests.get("https://ragbuilderapi.streamlit.app/api/rag/url_build", params=params)
+    response = requests.get("http://15.165.12.110:8080/api/rag/url_build", params=params)
     if response.status_code == 200:
         return response.json()  # 응답을 JSON 형식으로 가정
     return {"error": "Failed to fetch data"}
 
 def call_file_build(file):
     files = {'file': (file.name, file)}
-    response = requests.post("https://ragbuilderapi.streamlit.app/api/rag/file_build", files=files)
+    response = requests.post("http://15.165.12.110:8080/api/rag/file_build", files=files)
     if response.status_code == 200:
         return response.json()  # 응답을 JSON 형식으로 가정
     return {"error": "Failed to upload file"}
 
 def call_build_list(build_type=None, page=1, page_size=10):
     params = {'build_type': build_type, 'page': page, 'page_size': page_size}
-    response = requests.get("https://ragbuilderapi.streamlit.app/api/rag/build_list", params=params)
+    response = requests.get("http://15.165.12.110:8080/api/rag/build_list", params=params)
     if response.status_code == 200:
         return response.json()
     return {"error": "Failed to fetch build list"}
@@ -36,7 +36,7 @@ def call_build_list(build_type=None, page=1, page_size=10):
 def call_similarity_search(key_word):
     # 유사도 검색 API 호출 로직 구현
     json_data = {'key_word': key_word}
-    response = requests.post("https://ragbuilderapi.streamlit.app/api/rag/similarity_search", json=json_data)
+    response = requests.post("http://15.165.12.110:8080/api/rag/similarity_search", json=json_data)
     if response.status_code == 200:
         return response.json()  # 응답을 JSON 형식으로 가정
     return {"error": "Failed to perform similarity search"}
